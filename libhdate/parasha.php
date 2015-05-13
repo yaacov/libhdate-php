@@ -49,7 +49,7 @@ hdate_get_parasha ($h, $diaspora = false)
       [0, 0, 0, 0, 0, 1, 1]  /* 14 */
     ],
     [
-      [1, 1, 1, 1, 0, 1, 1], /* 1 in $diaspora */
+      [1, 1, 1, 1, 0, 1, 1], /* 1 in diaspora */
       [1, 1, 1, 1, 0, 1, 0], /* 2 */
       [1, 1, 1, 1, 1, 1, 1], /* 3 */
       [1, 1, 1, 1, 0, 1, 0], /* 4 */
@@ -76,20 +76,11 @@ hdate_get_parasha ($h, $diaspora = false)
     if ($h->hd_day == 23 && $diaspora) return 54;
   }
   
-  
-  if ($h->hd_mon == 1 && $h->hd_day == 22)
-  {
-    return 54;
-  }
-  
   /* if not shabat return none */
   if ($h->hd_dw != 7)
   {
     return 0;
   }
-  
-  /* check for $diaspora $readings */
-  $diaspora = $diaspora?1:0;
   
   switch ($h->hd_weeks)
   {
