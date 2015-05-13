@@ -251,7 +251,7 @@ class Hdate {
     $jd_tishrey1_next_year = $this->hdate_days_from_3744 ($year + 1) + 1715119;
     
     /* Check if computed year was underestimated */
-    if ($jd_tishrey1_next_year <= jd)
+    if ($jd_tishrey1_next_year <= $jd)
     {
       $year = $year + 1;
       $jd_tishrey1 = $jd_tishrey1_next_year;
