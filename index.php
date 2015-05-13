@@ -2,6 +2,7 @@
 
 require "libhdate/julian.php";
 require "libhdate/parasha.php";
+require "libhdate/holyday.php";
 require "libhdate/strings.php";
 
 // create a new Hdate object
@@ -11,7 +12,10 @@ $h = new Hdate();
 /* NOTE: this function take day, month, year
          and NOT like other PHP functions month, day year 
 */
-$h->set_gdate(9, 5, 2015);
+$h->set_gdate(14, 5, 2015);
+
+// set date to Hebrew date 7 Tevet 5778
+//$h->set_hdate(7, 4, 5776);
 
 // set date to julian day number
 //$h->set_jd(2457152);
@@ -38,8 +42,16 @@ $h->set_gdate(9, 5, 2015);
 // get the reading number
 $reading = hdate_get_parasha($h);
 
+// get the reading number
+$holyday = hdate_get_holyday($h);
+
+// get the reading number
+$omer = hdate_get_omer_day($h);
+
 // print the reading number as text
 echo "{\"day\":" . $h->hd_day . 
   ", \"month\":" .$h->hd_mon . 
   ", \"year\":" . $h->hd_year . 
+  ", \"omer day\":" . $omer . 
+  ", \"holiday\":\"" . hdate_get_holyday_name($holyday) . "\"" .
   ", \"reading\":\"" . hdate_get_parasha_name($reading) . "\"}";

@@ -194,6 +194,55 @@ class Hdate {
   }
 
   /**
+   @brief Compute Julian day from Hebrew day, month and year
+   
+   @author Amos Shapir 1984 (rev. 1985, 1992) Yaacov Zamir 2003-2005
+
+   @param day Day of month 1..31
+   @param month Month 1..14 (13 - Adar 1, 14 - Adar 2)
+   @param year Hebrew year in 4 digits e.g. 5753
+   @return The julian day number
+   */
+  function
+  hdate_hdate_to_jd ($day, $month, $year)
+  {
+    $length_of_year = 0;
+    $jd = 0;
+    $days_from_3744 = 0;
+
+    /* Adjust for leap year */
+    if ($month == 13)
+    {
+      $month = 6;
+    }
+    if ($month == 14)
+    {
+      $month = 6;
+      $day += 30;
+    }
+
+    /* Calculate days since 1,1,3744 */
+    $days_from_3744 = $this->hdate_days_from_3744 ($year);
+    $day = $days_from_3744 + (int)((59 * ($month - 1) + 1) / 2) + $day;
+
+    /* length of year */
+    $length_of_year = $this->hdate_days_from_3744 ($year + 1) - $days_from_3744;
+  
+    /* Special cases for this year */
+    if ($length_of_year % 10 > 4 && $month > 2)  /* long Heshvan */
+      $day++;
+    if ($length_of_year % 10 < 4 && $month > 3)  /* short Kislev */
+      $day--;
+    if ($length_of_year > 365 && $month > 6)  /* leap year */
+      $day += 30;
+
+    /* adjust to julian */
+    $jd = $day + 1715118;
+  
+    return $jd;
+  }
+
+  /**
    @brief Converting from the Julian day to the Gregorian day
    Algorithm from 'Julian and Gregorian Day Numbers' by Peter Meyer 
 
@@ -332,27 +381,27 @@ class Hdate {
    @brief compute date structure from the Gregorian date
 
    @param d Day of month 1..31
-   @param m Month 1..12 ,  if m or d is 0 return current date.
+   @param m Month 1..12
    @param y Year in 4 digits e.g. 2001
    */
   public function
   set_gdate ($d, $m, $y)
   {
-    $this->gd_day = $d;
-    $this->gd_mon = $m;
-    $this->gd_year = $y;
-    
     $jd = $this->hdate_gdate_to_jd ($d, $m, $y);
-    list($this->hd_day, $this->hd_mon, $this->hd_year, $jd_tishrey1, $jd_tishrey1_next_year) = $this->hdate_jd_to_hdate ($jd);
-    
-    $this->hd_dw = ($jd + 1) % 7 + 1;
-    $this->hd_size_of_year = $jd_tishrey1_next_year - $jd_tishrey1;
-    $this->hd_new_year_dw = ($jd_tishrey1 + 1) % 7 + 1;
-    $this->hd_year_type = $this->hdate_get_year_type ($this->hd_size_of_year , $this->hd_new_year_dw);
-    $this->hd_jd = $jd;
-    $this->hd_days = $jd - $jd_tishrey1 + 1;
-    $this->hd_weeks = (int)((($this->hd_days - 1) + ($this->hd_new_year_dw - 1)) / 7) + 1;
-    
-    return;
+    $this->set_jd ($jd);
+  }
+  
+  /**
+   @brief compute date structure from the Gregorian date
+
+   @param d Day of month 1..31
+   @param m Month 1..14 (13 - Adar 1, 14 - Adar 2)
+   @param y Year in 4 digits e.g. 5743
+   */
+  public function
+  set_hdate ($d, $m, $y)
+  {
+    $jd = $this->hdate_hdate_to_jd ($d, $m, $y);
+    $this->set_jd ($jd);
   }
 }
