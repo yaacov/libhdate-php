@@ -3,6 +3,7 @@
 require "libhdate/julian.php";
 require "libhdate/parasha.php";
 require "libhdate/holyday.php";
+require "libhdate/sun_time.php";
 require "libhdate/strings.php";
 
 // create a new Hdate object
@@ -48,10 +49,22 @@ $holyday = hdate_get_holyday($h);
 // get the reading number
 $omer = hdate_get_omer_day($h);
 
+// for day times we use longitude, latitude and timeZone
+// for example in Tel Aviv summer time:
+$longitude = 34.77;
+$latitude = 32.07;
+$timeZone = 3 * 60; // 2 hours + 1 daylight saving
+
+list($sun_hour, $first_light, $talit, $sunrise, $midday, $sunset, $first_stars, $three_stars) = hdate_get_utc_sun_time_full ($h, $latitude, $longitude);
+$sunrise += $timeZone;
+$sunset += $timeZone;
+
 // print the reading number as text
 echo "{\"day\":" . $h->hd_day . 
   ", \"month\":" .$h->hd_mon . 
   ", \"year\":" . $h->hd_year . 
   ", \"omer day\":" . $omer . 
+  ", \"sunrise\":" . (int)($sunrise / 60) . ":" . $sunrise % 60 .
+  ", \"sunset\":" . (int)($sunset / 60) . ":" . $sunset % 60 .
   ", \"holiday\":\"" . hdate_get_holyday_name($holyday) . "\"" .
   ", \"reading\":\"" . hdate_get_parasha_name($reading) . "\"}";
