@@ -13,7 +13,7 @@ $h = new Hdate();
 /* NOTE: this function take day, month, year
          and NOT like other PHP functions month, day year 
 */
-$h->set_gdate(16, 5, 2015);
+$h->set_gdate(14, 5, 2015);
 
 // set date to Hebrew date 7 Tevet 5778
 //$h->set_hdate(7, 4, 5776);
@@ -40,8 +40,8 @@ $h->set_gdate(16, 5, 2015);
 */
 //print_r($h);
 
-// get the reading number
-$reading = hdate_get_parasha($h);
+// get the reading number for next shabbat
+$reading = hdate_get_shabbats_parasha($h);
 
 // get the reading number
 $holyday = hdate_get_holyday($h);
