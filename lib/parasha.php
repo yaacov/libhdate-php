@@ -30,10 +30,10 @@ hdate_get_shabbats_parasha ($h, $diaspora = false)
 {
   $next_shabbat = new Hdate();
   
-  // set the julian for next shabbat
+  /* set the julian for next shabbat */
   $next_shabbat->set_jd($h->hd_jd + 7 - $h->hd_dw);
   
-  // return the parasha for next_shabbat
+  /* return the parasha for next_shabbat */
   return hdate_get_parasha($next_shabbat, $diaspora);
 }
 
