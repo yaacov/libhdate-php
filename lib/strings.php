@@ -18,7 +18,7 @@
  */
 
 /**
- @brief Return string of hebrew parasha.
+ Return string of hebrew parasha.
 
  @param reading string number
  @return the name of parasha 1. Bereshit etc..
@@ -55,7 +55,7 @@ hdate_get_parasha_name ($reading)
 }
 
 /**
- @brief Return string of hebrew holydays.
+ Return string of hebrew holydays.
 
  @param holyday string number
  @return the name of holyday

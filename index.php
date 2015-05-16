@@ -1,10 +1,10 @@
 <?php
 
-require "libhdate/julian.php";
-require "libhdate/parasha.php";
-require "libhdate/holyday.php";
-require "libhdate/sun_time.php";
-require "libhdate/strings.php";
+require "lib/julian.php";
+require "lib/parasha.php";
+require "lib/holyday.php";
+require "lib/sun_time.php";
+require "lib/strings.php";
 
 // create a new Hdate object
 $h = new Hdate();
@@ -13,7 +13,7 @@ $h = new Hdate();
 /* NOTE: this function take day, month, year
          and NOT like other PHP functions month, day year 
 */
-$h->set_gdate(14, 5, 2015);
+$h->set_gdate(16, 5, 2015);
 
 // set date to Hebrew date 7 Tevet 5778
 //$h->set_hdate(7, 4, 5776);

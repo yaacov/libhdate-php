@@ -46,9 +46,9 @@ class Hdate {
   public $hd_weeks = 0;
   
   /**
-   @brief Days since bet (?) Tishrey 3744
+   Days since bet (?) Tishrey 3744
    
-   @author Amos Shapir 1984 (rev. 1985, 1992) Yaacov Zamir 2015 
+   Amos Shapir 1984 (rev. 1985, 1992) Yaacov Zamir 2015 
    
    @param hebrew_year The Hebrew year
    @return Number of days since 3,1,3744
@@ -110,7 +110,7 @@ class Hdate {
   }
 
   /**
-   @brief Size of Hebrew year in days
+   Size of Hebrew year in days
    
    @param hebrew_year The Hebrew year
    @return Size of Hebrew year
@@ -123,7 +123,7 @@ class Hdate {
   }
 
   /**
-   @brief Return Hebrew year type based on size and first week day of year.
+   Return Hebrew year type based on size and first week day of year.
    
    year type | year length | Tishery 1 day of week
    | 1       | 353         | 2 
@@ -166,10 +166,10 @@ class Hdate {
   }
 
   /**
-   @brief Compute Julian day from Gregorian day, month and year
+   Compute Julian day from Gregorian day, month and year
    Algorithm from the wikipedia's julian_day 
 
-   @author Yaacov Zamir
+   Yaacov Zamir
 
    @param day Day of month 1..31
    @param month Month 1..12
@@ -194,9 +194,9 @@ class Hdate {
   }
 
   /**
-   @brief Compute Julian day from Hebrew day, month and year
+   Compute Julian day from Hebrew day, month and year
    
-   @author Amos Shapir 1984 (rev. 1985, 1992) Yaacov Zamir 2003-2005
+   Amos Shapir 1984 (rev. 1985, 1992) Yaacov Zamir 2003-2005
 
    @param day Day of month 1..31
    @param month Month 1..14 (13 - Adar 1, 14 - Adar 2)
@@ -243,10 +243,10 @@ class Hdate {
   }
 
   /**
-   @brief Converting from the Julian day to the Gregorian day
+   Converting from the Julian day to the Gregorian day
    Algorithm from 'Julian and Gregorian Day Numbers' by Peter Meyer 
 
-   @author Yaacov Zamir ( Algorithm, Henry F. Fliegel and Thomas C. Van Flandern ,1968)
+   Yaacov Zamir ( Algorithm, Henry F. Fliegel and Thomas C. Van Flandern ,1968)
 
    @param jd Julian day
    @return date as d,m,y array
@@ -272,9 +272,9 @@ class Hdate {
   }
 
   /**
-   @brief Converting from the Julian day to the Hebrew day
+   Converting from the Julian day to the Hebrew day
    
-   @author Amos Shapir 1984 (rev. 1985, 1992) Yaacov Zamir 2003-2008
+   Amos Shapir 1984 (rev. 1985, 1992) Yaacov Zamir 2003-2008
 
    @param jd Julian day
    @return date as d,m,y array
@@ -356,7 +356,7 @@ class Hdate {
   }
 
   /**
-   @brief compute date structure from the  Julian day number
+   compute date structure from the  Julian day number
 
    @param jd Julian day number
    */
@@ -378,7 +378,7 @@ class Hdate {
   }
   
   /**
-   @brief compute date structure from the Gregorian date
+   compute date structure from the Gregorian date
 
    @param d Day of month 1..31
    @param m Month 1..12
@@ -392,7 +392,7 @@ class Hdate {
   }
   
   /**
-   @brief compute date structure from the Gregorian date
+   compute date structure from the Hebrew date
 
    @param d Day of month 1..31
    @param m Month 1..14 (13 - Adar 1, 14 - Adar 2)

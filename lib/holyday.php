@@ -18,7 +18,7 @@
  */
  
 /**
- @brief Return number of hebrew $holyday.
+ Return number of hebrew $holyday.
 
  @param h The hdate_struct of the date to use.
  @param diaspora if True give diaspora $holydays
@@ -237,7 +237,7 @@ hdate_get_holyday ($h, $diaspora = false)
 }
 
 /**
- @brief Return the day in the omer of the given date
+ Return the day in the omer of the given date
 
  @param h The hdate_struct of the date to use.
  @return The day in the omer, starting from 1 (or 0 if not in sfirat ha omer)

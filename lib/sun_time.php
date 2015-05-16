@@ -24,11 +24,11 @@
  */
 
 /**
- @brief days from 1 january
+ days from 1 january
   
- @parm day this day of month
- @parm month this month
- @parm year this year
+ @param day this day of month
+ @param month this month
+ @param year this year
  @return the days from 1 jan
 */
 function
@@ -50,7 +50,7 @@ hdate_get_day_of_year ($h)
 }
 
 /**
- @brief utc sun times for altitude at a gregorian date
+ utc sun times for altitude at a gregorian date
 
  Returns the sunset and sunrise times in minutes from 00:00 (utc time)
  if sun altitude in sunrise is deg degries.
@@ -114,7 +114,7 @@ hdate_get_utc_sun_time_deg ($h, $latitude, $longitude, $deg)
 }
 
 /**
- @brief utc sunrise/set time for a gregorian date
+ utc sunrise/set time for a gregorian date
   
  @parm day this day of month
  @parm month this month
@@ -138,8 +138,8 @@ hdate_get_utc_sun_time_full ($h, $latitude, $longitude)
   list($sunrise, $sunset) = hdate_get_utc_sun_time_deg ($h, $latitude, $longitude, 90.833);
   
   /* shaa zmanit by gara, 1/12 of light time */
-  $sun_hour = ($sunset - $sunrise) / 12;
-  $midday = ($sunset + $sunrise) / 2;
+  $sun_hour = (int)(($sunset - $sunrise) / 12);
+  $midday = (int)(($sunset + $sunrise) / 2);
   
   /* get times of the different sun angles */
   list($first_light, $none) = hdate_get_utc_sun_time_deg ($h, $latitude, $longitude, 106.01);
